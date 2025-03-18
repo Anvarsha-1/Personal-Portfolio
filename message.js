@@ -1,8 +1,3 @@
-document
-  .querySelector(".contact-form")
-  .addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent page reload
-
     // Get form values
     let name = document.getElementById("name").value.trim();
     let email = document.getElementById("email").value.trim();
@@ -43,7 +38,7 @@ document
       .send("service_vtkr2cn", "template_879uhv8", params)
       .then(() => {
         alert("Email has been sent!");
-        document.getElementsByClassName("contact-form")[0].reset(); // Reset form after success
+        document.getElementsByClassName("contact-form")[0].reset().preventDefault(); // Reset form after success
       })
       .catch((error) => {
         alert("Oops! Something went wrong.");
