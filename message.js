@@ -1,12 +1,15 @@
-function sendmail() {
-   // Get form values
-   let name = document.getElementById("name").value.trim();
-   let email = document.getElementById("email").value.trim();
-   let subject = document.getElementById("subject").value.trim();
-   let message = document.getElementById("message").value.trim();
- 
-   // Validate form inputs
-   if (!name) {
+document
+  .querySelector(".contact-form")
+  .addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent page reload
+
+    let params = {
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      subject: document.getElementById("subject").value.trim(),
+      message: document.getElementById("message").value.trim(),
+    };
+       if (!name) {
      alert("Name cannot be blank!");
      return;
    }
@@ -33,17 +36,15 @@ function sendmail() {
      subject: subject,
      message: message,
    };
- 
-   // Send email using EmailJS
-   emailjs
-     .send("service_vtkr2cn", "template_879uhv8", params)
-     .then(() => {
-       alert("Email has been sent!");
-       document.getElementsByClassName("contact-form")[0].reset(); // Reset form
-     })
-     .catch((error) => {
-       alert("Oops! Something went wrong.");
-       console.error("Error:", error);
-     });
- }
- 
+
+    emailjs
+      .send("service_vtkr2cn", "template_879uhv8", params)
+      .then(() => {
+        alert("Email has been sent!");
+        document.getElementsByClassName("contact-form")[0].reset(); // Reset form after success
+      })
+      .catch((error) => {
+        alert("Oops! Something went wrong.");
+        console.error("Error:", error);
+      });
+  });
