@@ -39,7 +39,7 @@ function sendmail() {
      .send("service_vtkr2cn", "template_879uhv8", params)
      .then(() => {
        alert("Email has been sent!");
-       document.getElementsByClassName("contact-form").reset(); // Reset form
+       document.getElementsByClassName("contact-form")[0].reset(); // Reset form
      })
      .catch((error) => {
        alert("Oops! Something went wrong.");
